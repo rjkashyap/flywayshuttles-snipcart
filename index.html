@@ -12,6 +12,209 @@ title: Urban
 
 <section class="diagonal patterned">
 	<div class="container halves">
+	
+	  <div class="container">
+    <!-- multistep form -->
+    <div>
+      <form id="msform">
+        <!-- progressbar -->
+        <!-- <ul id="progressbar">
+          <li class="active">Calculate shuttle Route</li>
+          <li>Summary Quote for a shuttle create a booking and send email</li>
+          <li>Customer Details for order</li>
+          <li>Payment details</li>
+        </ul> -->
+        <!-- fieldsets -->
+        <fieldset id="fieldsetRoute">
+          <h2 class="fs-title">Calculate shuttle Route</h2>
+          <h3 class="fs-subtitle">Enter origin and destination to calculate the price</h3>
+
+          <div id="calculateInput">
+            <div class="form-group">
+              <label>Origin: </label>
+              <input id="from_places" class="form-control" placeholder="Enter a location" />
+              <input id="origin" type="hidden" name="origin" required />
+            </div>
+            <div class="form-group">
+              <label> Destination: </label>
+              <input id="to_places" class="form-control" placeholder="Enter a location" />
+              <input id="destination" type="hidden" name="destination" required />
+            </div>
+            <div class="form-group">
+              <label>Pick Up Date/Time: </label>
+              <div class="input-group date" id='datetimepicker1'>
+                <input id="datetimepick" type='text' class="form-control" />
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-5">
+                <label for="colFormLabel">Passengers</label>
+                <div class="col-sm-7">
+                  <select id="selectedPassengers" class="form-control">
+                    <!-- <option>Bank/Poli</option> -->
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col-sm-5">
+                <label for="colFormLabel">Checked Luggage</label>
+                <div class="col-sm-7">
+                  <select id="selectedLuggage" class="form-control">
+                    <!-- <option>Bank/Poli</option> -->
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button type=“submit” id="bookNow" name="bookNow" class="btn btn-primary btn-lg">Calculate Route
+                <span class="glyphicon glyphicon-send"> </span>
+              </button>
+              <button type=“submit” id="newBooking" name="newbookNow" class="btn btn-primary btn-lg calculateButton">Calculate New Route
+                <span class="glyphicon glyphicon-log-out"> </span>
+              </button>
+            </div>
+          </div>
+
+          <div id="result" class="panel-body">
+            <!-- TODO:  Primary panel to do add stuff inside -->
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col">Total</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Distance (KM):</th>
+                  <td colspan="2"><span id='in_kilo'></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Fare:</th>
+                  <td colspan="2"> <span id="fare_nzd"> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Duration:</th>
+                  <td colspan="2"> <span id="duration_text"></span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">From:</th>
+                  <td colspan="2"> <span id="from"></span> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">To: </th>
+                  <td colspan="2"> <span id="to"> </span> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <button type="button" name="nextSummary" class="nextSummary btn btn-primary btn-lg" value="Next">Next
+          <span class="glyphicon glyphicon-arrow-right"> </span>
+        </button>
+      </fieldset>
+      <fieldset>
+          <h2 class="fs-title">Summary Quote for a shuttle create a booking and send email</h2>
+          <h3 class="fs-subtitle">Details for your Booking</h3>
+          <div id="summary">
+            <!-- TODO:  Primary panel to do add stuff inside -->
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Date and Time of Service:</th>
+                  <td colspan="2"> <span id="dateTimeService"></span> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Destination From:</th>
+                  <td colspan="2"> <span id="originSummary"></span> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Origin To: </th>
+                  <td colspan="2"> <span id="destinySummary"> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">No of Passengers: </th>
+                  <td colspan="2"> <span id="noPassengersSummary"> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Checked Luggage: </th>
+                  <td colspan="2"> <span id="checkedLuggageSummary"> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Distance in KM:</th>
+                  <td colspan="2"><span id='distanceSummary'></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Fare:</th>
+                  <td colspan="2"> <span id="fareSummary"> </span> </td>
+                </tr>
+                <tr>
+                  <th scope="row">Estimated Duration:</th>
+                  <td colspan="2"> <span id="durationSummary"></span> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- buttons for movement and interaction -->
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+          <!-- <button id="add-order" class="pay-button">Confirm Booking and Pay </button> -->
+          <input type="button" name="confirmBooking" class="confirmBooking pay-button" value="Confirm Booking" />
+        </fieldset>
+        <fieldset>
+          <h2 class="fs-title">Customer Details for order Secured Payment</h2>
+          <input type="text" name="customer_name" placeholder="customer name" />
+          <input type="text" name="customer_email" placeholder="Email" />
+          <input type="text" name="customer_phone" placeholder="Mobile Phone" />
+          <input type="textarea" name="address" placeholder="customer Address" />
+          <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">Payment Option</label>
+            <div class="col-sm-10">
+              <select class="form-control form-control-sm">
+                <!-- <option>Bank/Poli</option> -->
+                <option>EFTPOS</option>
+                <option>Credit Card</option>
+                <option>Cash</option>
+              </select>
+            </div>
+          </div>
+          <div id="card-element"> </div>
+          <div id="card-errors"> </div>
+          <!-- buttons for movement and interaction -->
+          <input type="button" name="previous" class="previous action-button" value="Previous" />
+          <input type="submit" class="submit action-button" name="pay" value="Pay" />
+          <!-- action-button-->
+        </fieldset>
+      </form>
+    </div>
+  </div><!-- end of container -->
+	
 		<div>
 			<h3 class="editable">Some of our work</h3>
 			<p class="editable">We take pride in our previous work and our happy customers. We cater to any sector to boost business and increase exposure.</p>
